@@ -1,2 +1,64 @@
 import camion.*
 import cosas.*
+
+//TESTS:
+
+describe "Cosas tests" {
+	
+	test "knightRider no pesa 600 gramos"{
+		assert.notThat(knightRider.peso() == 600)
+	}
+	
+	test "El nivel de peligrosidad de KnightRider es 10"{
+		assert.equals(10, knightRider.nivelDePeligrosidad())
+	}
+	
+	test "Un paquete de 200 ladrillos tiene un peso igual a 400"{
+		paqueteLadrillos.cantidad(200)
+		assert.equals(400, paqueteLadrillos.peso())
+	}
+	
+	test "Un paquete de ladrillos tiene un nivel de peligrosidad menor a 10"{
+		assert.that(paqueteLadrillos.nivelDePeligrosidad() < 10)
+	}
+	
+	test "La bateria antiarea está cargada con misiles por lo que su peso es de 300"{
+		assert.equals(300, bateriaAntiarea.peso())
+	}
+	
+	test "La bateria antiarea no está cargada con misiles por lo que su peso es de 200"{
+		bateriaAntiarea.manejarMisiles()
+		assert.equals(200, bateriaAntiarea.peso())
+	}
+	
+	test "El nivel de peligrosidad de la bateria antiarea es 100 ya que está con misiles"{
+		assert.that(bateriaAntiarea.nivelDePeligrosidad() == 100)
+	}
+	
+	test "El contenedor tiene un peso de 800"{
+		contenedor.cargar(arena)
+		arena.peso(200)
+		contenedor.cargar(knightRider)
+		assert.equals(800, contenedor.peso())
+	}
+	
+	test "El contenedor se encuentra vacío"{
+		contenedor.cargar(arena)
+		arena.peso(200)
+		contenedor.cargar(knightRider)
+		contenedor.vaciar()
+		assert.that(contenedor.estaVacio())
+	}
+	
+	test "El embalaje pesa más que 25"{
+		embalajeSeguridad.cosa(residuosRadioactivos)
+		residuosRadioactivos.peso(30)
+		assert.that(embalajeSeguridad.peso() > 25)
+	}
+	
+	test "El nivel de peligrosidad del embalaje es de 100"{
+		embalajeSeguridad.cosa(residuosRadioactivos)
+		assert.equals(100, embalajeSeguridad.nivelDePeligrosidad())
+	}
+}
+	

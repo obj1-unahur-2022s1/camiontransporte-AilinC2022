@@ -1,4 +1,4 @@
-import cosas.*
+import cosas2.*
 
 object camion {
 	
@@ -36,4 +36,9 @@ object camion {
 	method cosaMasPesada() = cosas.max( { c => c.peso() } )
 	
 	method pesos() = cosas.map( { c => c.peso()	} )
+	
+	//Total bultos:
+	
+	method totalBultos() = cosas.sum ( { c => c.totalBultos() } )
+
 }
