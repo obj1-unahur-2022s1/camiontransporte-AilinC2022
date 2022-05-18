@@ -1,3 +1,6 @@
+/*
+ * Muy Bien
+ */
 import cosas2.*
 
 object camion {
@@ -9,7 +12,7 @@ object camion {
 	method cargar(cosa){ cosas.add(cosa) }
 	
 	method descargar(cosa){ cosas.remove(cosa) }
-	
+	/*podes usar c.peso().even() en lugar % 2==0 */
 	method todoPesoPar() = cosas.all( { c => c.peso() % 2 == 0 } )
 	
 	method hayAlgunoQuePesa(peso) = cosas.any( { c => c.peso() == peso } )
@@ -22,8 +25,9 @@ object camion {
 	
 	method objetosQueSuperanPeligrosidad(nivel) = cosas.filter( { c => c.nivelDePeligrosidad() > nivel } )
 	
-	method objetosMasPeligrososQue(cosa) = cosas.filter( { c => c.nivelDePeligrosidad() > cosa.nivelDePeligrosidad() } )
-	
+	/* Podias reutilizar  objetosQueSuperanPeligrosidad(nivel) */
+	//method objetosMasPeligrososQue(cosa) = cosas.filter( { c => c.nivelDePeligrosidad() > cosa.nivelDePeligrosidad() } )
+	method objetosMasPeligrososQue(cosa) = self.objetosQueSuperanPeligrosidad(cosa.nivelDePeligrosidad())
 	//Método propio:
 	method ningunoSuperaElNivelMaximo(nivel) = cosas.all( { c => c.nivelDePeligrosidad() < nivel } )
 	

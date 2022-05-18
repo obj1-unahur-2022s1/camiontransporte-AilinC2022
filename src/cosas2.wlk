@@ -1,3 +1,6 @@
+/*
+ * Muy Bien :-)
+ */
 import camion2.*
 
 object knightRider {
